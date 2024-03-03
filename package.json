@@ -28,5 +28,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "valir-ui": "^1.2.5"
+  },
+  "devDependencies": {
+    "mocha": "^10.3.0"
   }
 }

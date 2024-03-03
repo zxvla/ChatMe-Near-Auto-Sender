@@ -23,7 +23,7 @@ const connectionConfig = {
   explorerUrl: "https://nearblocks.io",
 };
 const nearConnection = await connect(connectionConfig);
-const account = await nearConnection.account("zxvl.near");
+const account = await nearConnection.account(process.env.ACCOUNT_ID);
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -60,5 +60,5 @@ rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
       "0" // attached deposit in yoctoNEAR (optional)
     );
   }
-setInterval(receiver,13000);
+setInterval(receiver,15000);
 });
