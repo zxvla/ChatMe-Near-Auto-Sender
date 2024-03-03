@@ -1,0 +1,32 @@
+{
+  "name": "chatme-auto-sender",
+  "version": "1.0.0",
+  "description": "simple auto sender",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zxvla/ChatMe-Near-Auto-Sender.git"
+  },
+  "keywords": [
+    "sender"
+  ],
+  "author": "zxvl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zxvla/ChatMe-Near-Auto-Sender/issues"
+  },
+  "homepage": "https://github.com/zxvla/ChatMe-Near-Auto-Sender#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.5",
+    "near-api-js": "^0.44.2",
+    "readline": "^1.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "valir-ui": "^1.2.5"
+  }
+}
