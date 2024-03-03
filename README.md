@@ -38,6 +38,7 @@ To run this project, you will need to add the following environment variables to
 or rename the .env-examples to .env
 
 `KEY_PRIVATE` = "your private key near wallet without ed25519:"
+
 `ACCOUNT_ID` = "your public address example johndoe.near"
 
 `INNER_ID` = "" this is optional, better use my INNER_ID value
@@ -45,4 +46,5 @@ or rename the .env-examples to .env
 `TEXT` = "your text message that you want to send"
 
 `NETWORK_ID` = "mainnet" // you can use mainnet, tesnet, localnet
+
 `NODE` = "your custom node RPC endpoints"
