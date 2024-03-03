@@ -11,7 +11,7 @@ const PRIVATE_KEY = process.env.KEY_PRIVATE;
 // creates a public / private key pair using the provided private key
 const keyPair = KeyPair.fromString(PRIVATE_KEY);
 // adds the keyPair you created to keyStore
-await myKeyStore.setKey("mainnet", "zxvl.near", keyPair);
+await myKeyStore.setKey("mainnet", process.env.ACCOUNT_ID, keyPair);
 
 
 const connectionConfig = {
