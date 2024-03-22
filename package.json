@@ -1,6 +1,6 @@
 {
   "name": "chatme-auto-sender",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple auto sender",
   "main": "index.js",
   "type": "module",

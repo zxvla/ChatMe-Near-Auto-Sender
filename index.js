@@ -11,7 +11,7 @@ const PRIVATE_KEY = process.env.KEY_PRIVATE;
 // creates a public / private key pair using the provided private key
 const keyPair = KeyPair.fromString(PRIVATE_KEY);
 // adds the keyPair you created to keyStore
-await myKeyStore.setKey("mainnet", process.env.ACCOUNT_ID, keyPair);
+await myKeyStore.setKey(process.env.NETWORK_ID, process.env.ACCOUNT_ID, keyPair);
 
 
 const connectionConfig = {
@@ -60,5 +60,5 @@ rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
       "0" // attached deposit in yoctoNEAR (optional)
     );
   }
-setInterval(receiver,15000);
+  setInterval(receiver,15000);
 });
