@@ -45,7 +45,7 @@ rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
 
   async function receiver() {
     console.log(cyan(`Calling the Contract`));
-    const contract = new Contract(account, "chatme.near", {
+    const contract = new Contract(account, process.env.SC, {
       changeMethods: ["send_private_message"],
     });
     await contract.send_private_message(
