@@ -7,23 +7,23 @@ const cyan = chalk.bold.cyan;
 
 const { keyStores, KeyPair, connect, Contract } = nearAPI;
 const myKeyStore = new keyStores.InMemoryKeyStore();
-const PRIVATE_KEY = process.env.TESTNET_KEY;
+const PRIVATE_KEY = process.env.KEY_PRIVATE;
 // creates a public / private key pair using the provided private key
 const keyPair = KeyPair.fromString(PRIVATE_KEY);
 // adds the keyPair you created to keyStore
-await myKeyStore.setKey("testnet", process.env.TESTNET_ACCOUNT, keyPair);
+await myKeyStore.setKey(process.env.NETWORK_ID, process.env.ACCOUNT_ID, keyPair);
 
 
 const connectionConfig = {
-  networkId: process.env.TESTNET_NETWORK,
+  networkId: process.env.NETWORK_ID,
   keyStore: myKeyStore, // first create a key store
-  nodeUrl: process.env.TESTNET_NODE,
-  walletUrl: "https://testnet.mynearwallet.com",
+  nodeUrl: process.env.NODE,
+  walletUrl: "https://wallet.mainnet.near.org",
   helperUrl: "https://helper.mainnet.near.org",
-  explorerUrl: "https://testnet.nearblocks.io",
+  explorerUrl: "https://nearblocks.io",
 };
 const nearConnection = await connect(connectionConfig);
-const account = await nearConnection.account(process.env.TESTNET_ACCOUNT);
+const account = await nearConnection.account(process.env.ACCOUNT_ID);
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -44,9 +44,8 @@ console.log(cyan(``));
 rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
 
   async function receiver() {
-    try {
-      console.log(cyan(`Calling the Contract`));
-    const contract = new Contract(account, "chatme.testnet", {
+    console.log(cyan(`Calling the Contract`));
+    const contract = new Contract(account, process.env.SC, {
       changeMethods: ["send_private_message"],
     });
     await contract.send_private_message(
@@ -60,10 +59,6 @@ rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
       "300000000000000", // attached GAS (optional)
       "0" // attached deposit in yoctoNEAR (optional)
     );
-    }
-    catch (error) {
-      console.error("Error:", error);
-    }
-  } 
-  setInterval(receiver,1000);
+  }
+  setInterval(receiver,15000);
 });

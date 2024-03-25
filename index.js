@@ -4,6 +4,8 @@ import * as nearAPI from "near-api-js";
 import 'dotenv/config';
 
 const cyan = chalk.bold.cyan;
+const green = chalk.bold.green;
+const red = chalk.bold.red
 
 const { keyStores, KeyPair, connect, Contract } = nearAPI;
 const myKeyStore = new keyStores.InMemoryKeyStore();
@@ -44,7 +46,8 @@ console.log(cyan(``));
 rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
 
   async function receiver() {
-    console.log(cyan(`Calling the Contract`));
+    try {
+      console.log(cyan(`Calling the Contract`));
     const contract = new Contract(account, process.env.SC, {
       changeMethods: ["send_private_message"],
     });
@@ -59,6 +62,11 @@ rl.question(chalk.bold.cyan('Receiver Address : '), (answer) => {
       "300000000000000", // attached GAS (optional)
       "0" // attached deposit in yoctoNEAR (optional)
     );
+    } 
+    catch (error) {
+      console.error(green("Error by >>>>>"), (red(error)));
+    }
+    
   }
-  setInterval(receiver,15000);
+  setInterval(receiver,1000);
 });
